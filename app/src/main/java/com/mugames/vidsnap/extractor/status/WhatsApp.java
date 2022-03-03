@@ -68,7 +68,6 @@ public class WhatsApp extends Extractor {
         } else {
             analyzeBelowR();
         }
-
     }
 
     @RequiresApi(Build.VERSION_CODES.R)
@@ -85,7 +84,7 @@ public class WhatsApp extends Extractor {
         String path = FileUtil.getExternalStoragePublicDirectory(getContext(), "WhatsApp") + SUFFIX_PATH;
         File directory = new File(path);
         File[] files = directory.listFiles();
-        if (files != null && (!directory.exists() || !directory.canRead() || files.length <= 0)) {
+        if (files != null && (!directory.exists() || !directory.canRead() || files.length > 0)) {
             fetchDetails(directory);
         } else {
             getDialogueInterface().error("WhatsApp Not installed", null);
@@ -116,7 +115,6 @@ public class WhatsApp extends Extractor {
                 formats.fileMime.add(MIMEType.IMAGE_JPEG);
             }
         }
-
     }
 
     void fetchDetailsOfFile(DocumentFile file) {
@@ -135,6 +133,5 @@ public class WhatsApp extends Extractor {
                 formats.fileMime.add(MIMEType.IMAGE_JPEG);
             }
         }
-
     }
 }
